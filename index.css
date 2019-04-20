@@ -1,0 +1,11 @@
+#camera {
+  position: absolute;
+  top: 10px; left: 10px;
+  transform-origin: left top;
+  transform: scale(0.1);
+}
+
+#cameracanvas {
+  display: block;
+  background-color: yellow;
+}

@@ -23,6 +23,7 @@ function playBell() {
 }
 
 function notifyToSlack() {
+  const token = location.search.substring(1);
   const ctx = document.getElementById("cameracanvas").getContext("2d");
   // impl.
 }

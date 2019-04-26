@@ -1,3 +1,5 @@
+// vim:set sw=2 ts=2 sts=2 expandtab:
+
 const camera = document.getElementById("camera");
 
 function bindCamera() {

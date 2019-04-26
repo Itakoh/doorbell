@@ -36,7 +36,6 @@ function takePhoto() {
 
 function notifyToSlack(photoBlob) {
   const token = location.hash.substring(1);
-
   const formData = new FormData();
   formData.append("token", token);
   formData.append("channels", "GJ7DDRPAL");

@@ -34,13 +34,13 @@ function takePhoto() {
   return toBlob(photo.toDataURL("image/jpeg"));
 }
 
-function notifyToSlack(photoBlob) {
+function notifyToSlack(visitor, photoBlob) {
   const token = location.hash.substring(1);
   const formData = new FormData();
   formData.append("token", token);
   formData.append("channels", "GJ7DDRPAL");
   formData.append("file", photoBlob);
-  formData.append("initial_comment", "Shakes the cat");
+  formData.append("initial_comment", visitor);
 
   fetch("https://slack.com/api/files.upload", {
     method: "POST",
@@ -48,9 +48,9 @@ function notifyToSlack(photoBlob) {
   });
 }
 
-async function ring() {
+async function ring(visitor) {
   playBell();
-  notifyToSlack(await takePhoto());
+  notifyToSlack(visitor, await takePhoto());
 }
 
 bindCamera();

@@ -9,8 +9,8 @@
 
 <video id="camera" src="mockcamera.webm" muted autoplay playsinline></video>
 <h1>受付</h1>
-<input type="button" value="お約束のお客様" onclick="ring()" />
-<input type="button" value="配送業者様" onclick="ring()" />
+<input type="button" value="お約束のお客様" onclick="ring(this.value)" />
+<input type="button" value="配送業者様" onclick="ring(this.value)" />
 
 <canvas id="photo"></canvas>
 <audio id="bell" src="bell.mp3"></audio>

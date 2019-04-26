@@ -34,14 +34,24 @@ function takePhoto() {
   return toBlob(photo.toDataURL("image/jpeg"));
 }
 
-function notifyToSlack() {
-  const token = location.search.substring(1);
+function notifyToSlack(photoBlob) {
+  const token = location.hash.substring(1);
+
+  const formData = new FormData();
+  formData.append("token", token);
+  formData.append("channels", "GJ7DDRPAL");
+  formData.append("file", photoBlob);
+  formData.append("initial_comment", "Shakes the cat");
+
+  fetch("https://slack.com/api/files.upload", {
+    method: "POST",
+    body: formData
+  });
 }
 
 async function ring() {
   playBell();
-  console.log(await takePhoto());
-  notifyToSlack();
+  notifyToSlack(await takePhoto());
 }
 
 bindCamera();

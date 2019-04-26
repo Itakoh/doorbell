@@ -40,6 +40,7 @@ function notifyToSlack(visitor, photoBlob) {
   formData.append("token", token);
   formData.append("channels", "GJ7DDRPAL");
   formData.append("file", photoBlob);
+  formData.append("filename", "photo.jpg");
   formData.append("initial_comment", visitor);
 
   fetch("https://slack.com/api/files.upload", {

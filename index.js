@@ -16,11 +16,11 @@ function bindCamera() {
 }
 
 function playBell() {
-  const audio = document.getElementById("bell");
-  if (audio.paused) {
-    audio.play();
+  const bell = document.getElementById("bell");
+  if (bell.paused) {
+    bell.play();
   } else {
-    audio.currentTime = 0;
+    bell.currentTime = 0;
   }
 }
 

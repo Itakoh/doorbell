@@ -7,7 +7,7 @@
   transform: scale(0.1);
 }
 
-#cameracanvas {
+#photo {
   display: block;
   background-color: yellow;
 }

@@ -34,10 +34,10 @@ function toBlob(dataURL, mimeType) {
 }
 
 function takePhoto() {
-  const canvas = document.getElementById("cameracanvas");
-  canvas.getContext("2d").drawImage(camera, 0, 0, canvas.width, canvas.height);
+  const photo = document.getElementById("photo");
+  photo.getContext("2d").drawImage(camera, 0, 0, photo.width, photo.height);
   const mimeType = "image/jpeg";
-  return toBlob(canvas.toDataURL(mimeType), mimeType);
+  return toBlob(photo.toDataURL(mimeType), mimeType);
 }
 
 function notifyToSlack() {

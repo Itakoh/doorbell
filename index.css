@@ -8,6 +8,6 @@
 }
 
 #photo {
-  display: block;
+  display: /*block*/none;
   background-color: yellow;
 }

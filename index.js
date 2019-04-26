@@ -2,17 +2,17 @@
 
 const camera = document.getElementById("camera");
 
-function bindCamera() {
+async function bindCamera() {
   const constraints = {
     audio: false,
     video: true
   };
-  const promise = navigator.mediaDevices.getUserMedia(constraints);
-  promise.then(function(stream) {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
     camera.srcObject = stream;
-  }).catch(function(err) {
+  } catch(err) {
     alert(err);
-  });
+  }
 }
 
 function playBell() {

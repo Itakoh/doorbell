@@ -26,8 +26,9 @@ function playBell() {
 
 function notifyToSlack() {
   const token = location.search.substring(1);
-  const ctx = document.getElementById("cameracanvas").getContext("2d");
-  // impl.
+  const canvas = document.getElementById("cameracanvas");
+  canvas.getContext("2d").drawImage(camera, 0, 0, canvas.width, canvas.height);
+  console.log(canvas.toDataURL());
 }
 
 function ring() {

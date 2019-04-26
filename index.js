@@ -24,15 +24,29 @@ function playBell() {
   }
 }
 
-function notifyToSlack() {
-  const token = location.search.substring(1);
+function toBlob(dataURL, mimeType) {
+  const bin = atob(dataURL.split(",")[1]);
+  const array = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) {
+    array[i] = bin.charCodeAt(i);
+  }
+  return new Blob([array], {type: mimeType});
+}
+
+function takePhoto() {
   const canvas = document.getElementById("cameracanvas");
   canvas.getContext("2d").drawImage(camera, 0, 0, canvas.width, canvas.height);
-  console.log(canvas.toDataURL("image/jpeg"));
+  const mimeType = "image/jpeg";
+  return toBlob(canvas.toDataURL(mimeType), mimeType);
+}
+
+function notifyToSlack() {
+  const token = location.search.substring(1);
 }
 
 function ring() {
   playBell();
+  console.log(takePhoto());
   notifyToSlack();
 }
 

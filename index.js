@@ -24,29 +24,23 @@ function playBell() {
   }
 }
 
-function toBlob(dataURL, mimeType) {
-  const bin = atob(dataURL.split(",")[1]);
-  const array = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) {
-    array[i] = bin.charCodeAt(i);
-  }
-  return new Blob([array], {type: mimeType});
+async function toBlob(dataURL) {
+  return (await fetch(dataURL)).blob();
 }
 
 function takePhoto() {
   const photo = document.getElementById("photo");
   photo.getContext("2d").drawImage(camera, 0, 0, photo.width, photo.height);
-  const mimeType = "image/jpeg";
-  return toBlob(photo.toDataURL(mimeType), mimeType);
+  return toBlob(photo.toDataURL("image/jpeg"));
 }
 
 function notifyToSlack() {
   const token = location.search.substring(1);
 }
 
-function ring() {
+async function ring() {
   playBell();
-  console.log(takePhoto());
+  console.log(await takePhoto());
   notifyToSlack();
 }
 

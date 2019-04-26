@@ -2,9 +2,9 @@
 
 #camera {
   position: absolute;
-  top: 10px; left: 10px;
-  transform-origin: left top;
-  transform: scale(0.1);
+  right: 10px; bottom: 10px;
+  transform-origin: right bottom;
+  transform: scale(0.01);
 }
 
 #photo {

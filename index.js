@@ -7,7 +7,7 @@ async function bindCamera() {
     audio: false,
     video: {
       width: 640,
-      frameRate: 10
+      frameRate: 15
     }
   };
   try {

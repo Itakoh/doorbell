@@ -5,7 +5,10 @@ const camera = document.getElementById("camera");
 async function bindCamera() {
   const constraints = {
     audio: false,
-    video: true
+    video: {
+      width: 640,
+      frameRate: 5
+    }
   };
   try {
     const stream = await navigator.mediaDevices.getUserMedia(constraints);

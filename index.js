@@ -3,12 +3,10 @@
 const camera = document.getElementById("camera");
 
 async function bindCamera() {
+  // see https://stackoverflow.com/questions/46981889/how-to-resolve-ios-11-safari-getusermedia-invalid-constraint-issue
   const constraints = {
     audio: false,
-    video: {
-      width: 640,
-      frameRate: 15
-    }
+    video: true
   };
   try {
     const stream = await navigator.mediaDevices.getUserMedia(constraints);

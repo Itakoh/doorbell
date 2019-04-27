@@ -4,7 +4,7 @@
   position: absolute;
   right: 10px; bottom: 10px;
   transform-origin: right bottom;
-  transform: scale(1);
+  transform: scale(0.01);
 }
 
 #photo {

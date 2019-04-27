@@ -6,8 +6,8 @@ async function bindCamera() {
   const constraints = {
     audio: false,
     video: {
-      width: 640,
-      frameRate: 15
+      width: 320,
+      frameRate: 5
     }
   };
   try {

@@ -8,8 +8,10 @@
 <title>ドアベル</title>
 
 <h1>受付</h1>
-<input type="button" value="お約束のお客様" onclick="ring('bell', this.value)" />
-<input type="button" value="配送業者様" onclick="ring('buzzer', this.value)" />
+<div>
+  <input type="button" value="お約束のお客様" onclick="ring('bell', this.value)" />
+  <input type="button" value="配送業者様" onclick="ring('buzzer', this.value)" />
+</div>
 
 <video id="camera" src="mockcamera.webm" muted autoplay playsinline></video>
 <canvas id="photo" width="640" height="480"></canvas>

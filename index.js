@@ -15,12 +15,12 @@ async function bindCamera() {
   }
 }
 
-function playBell() {
-  const bell = document.getElementById("bell");
-  if (bell.paused) {
-    bell.play();
+function playAudio(audioId) {
+  const audio = document.getElementById(audioId);
+  if (audio.paused) {
+    audio.play();
   } else {
-    bell.currentTime = 0;
+    audio.currentTime = 0;
   }
 }
 
@@ -49,9 +49,9 @@ function notifyToSlack(message, photoBlob) {
   });
 }
 
-async function ring(message) {
-  playBell();
-  notifyToSlack(message, await takePhoto());
+async function ring(audioId, message) {
+  playAudio(audioId);
+  //notifyToSlack(message, await takePhoto());
 }
 
 bindCamera();

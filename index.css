@@ -1,5 +1,12 @@
 /* vim:set sw=2 ts=2 sts=2 expandtab: */
 
+body {
+  background-image: url(spring.png);
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 #camera {
   position: absolute;
   right: 10px; bottom: 10px;

@@ -7,8 +7,18 @@ body {
   background-size: cover;
 }
 
+img[srcset*=button1] {
+  position: fixed;
+  left: 50px; top: 120px;
+}
+
+img[srcset*=button2] {
+  position: fixed;
+  left: 50px; top: 370px;
+}
+
 #camera {
-  position: absolute;
+  position: fixed;
   right: 10px; bottom: 10px;
   transform-origin: right bottom;
   transform: scale(0.01);
@@ -17,21 +27,4 @@ body {
 #photo {
   display: /*block*/none;
   background-color: yellow;
-}
-
-h1 {
-  margin-top: 120px;
-  text-align: center;
-  font-size: 80px;
-}
-
-div {
-  text-align: center;
-}
-
-input {
-  margin: 20px;
-  width: 400px;
-  height: 160px;
-  font-size: 44px;
 }

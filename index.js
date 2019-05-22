@@ -51,7 +51,7 @@ function notifyToSlack(message, photoBlob) {
 
 async function ring(soundId, message) {
   playSound(soundId);
-  //notifyToSlack(message, await takePhoto());
+  notifyToSlack(message, await takePhoto());
 }
 
 bindCamera();

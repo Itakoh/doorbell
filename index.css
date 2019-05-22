@@ -9,12 +9,12 @@ body {
 
 img[srcset*=button1] {
   position: fixed;
-  left: 50px; top: 120px;
+  left: 50px; top: 100px;
 }
 
 img[srcset*=button2] {
   position: fixed;
-  left: 50px; top: 370px;
+  left: 50px; top: 350px;
 }
 
 #camera {

@@ -19,8 +19,10 @@ function playSound(soundId) {
   const sound = document.getElementById(soundId);
   if (sound.paused) {
     sound.play();
+    return true;
   } else {
     sound.currentTime = 0;
+    return false;
   }
 }
 
@@ -50,8 +52,9 @@ function notifyToSlack(message, photoBlob) {
 }
 
 async function ring(soundId, message) {
-  playSound(soundId);
-  notifyToSlack(message, await takePhoto());
+  if (playSound(soundId)) {
+    notifyToSlack(message, await takePhoto());
+  }
 }
 
 bindCamera();

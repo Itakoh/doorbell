@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="index.css">
 <title>ドアベル</title>
 
-<img srcset="button1.png 2x" ontouchend="ring('bell', 'お約束のお客様')">
-<img srcset="button2.png 2x" ontouchend="ring('buzzer', '配送業者様')">
+<img srcset="button1.png 2x" ontouchstart="classList.add('dark')" ontouchend="classList.remove('dark'); ring('bell', 'お約束のお客様')">
+<img srcset="button2.png 2x" ontouchstart="classList.add('dark')" ontouchend="classList.remove('dark'); ring('buzzer', '配送業者様')">
 
 <video id="camera" src="mockcamera.webm" muted autoplay playsinline></video>
 <canvas id="photo" width="640" height="480"></canvas>

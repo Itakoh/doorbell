@@ -17,6 +17,10 @@ img[srcset*=button2] {
   left: 50px; top: 340px;
 }
 
+.dark {
+  filter: brightness(80%);
+}
+
 #camera {
   position: fixed;
   right: 10px; bottom: 10px;

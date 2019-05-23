@@ -10,11 +10,15 @@ body {
 img[srcset*=button1] {
   position: fixed;
   left: 50px; top: 90px;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  cursor:pointer;
 }
 
 img[srcset*=button2] {
   position: fixed;
   left: 50px; top: 340px;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  cursor:pointer;
 }
 
 #camera {

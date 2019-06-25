@@ -57,4 +57,20 @@ async function ring(soundId, message) {
   }
 }
 
+function getSeason() {
+  const m = 1 + new Date().getMonth();
+  if (3 <= m && m <=  5) return "spring";
+  if (6 <= m && m <=  8) return "summer";
+  if (9 <= m && m <= 11) return "autumn";
+  return "winter";
+}
+
+function refreshBackgroundImage() {
+  document.body.style.backgroundImage = `url(${getSeason()}.png)`;
+}
+
+
 bindCamera();
+
+refreshBackgroundImage();
+setInterval(refreshBackgroundImage, 12 * 60 * 60 * 1000);

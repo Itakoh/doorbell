@@ -73,4 +73,4 @@ function refreshBackgroundImage() {
 bindCamera();
 
 refreshBackgroundImage();
-setInterval(refreshBackgroundImage, 12 * 60 * 60 * 1000);
+setInterval(refreshBackgroundImage, 8 * 60 * 60 * 1000);

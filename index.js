@@ -59,10 +59,13 @@ async function ring(soundId, message) {
 
 function getSeason() {
   const m = 1 + new Date().getMonth();
-  if (3 <= m && m <=  5) return "spring";
-  if (6 <= m && m <=  8) return "summer";
-  if (9 <= m && m <= 11) return "autumn";
-  return "winter";
+  if (1  == m)            return "newyear";
+  if (2  <= m && m <=  3) return "winter";
+  if (4  <= m && m <=  6) return "spring";
+  if (7  <= m && m <=  9) return "summer";
+  if (10 <= m && m <= 11) return "autumn";
+  if (12 == m)            return "xmas";
+  return "spring";
 }
 
 function refreshBackgroundImage() {

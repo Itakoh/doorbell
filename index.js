@@ -53,45 +53,25 @@ function notifyToSlack1(message, photoBlob) {
 
 async function notifyToSlack(message, photoBlob) {
   const token = location.hash.substring(1);
-  const formData = new FormData();
-  formData.append("token", token);
-  formData.append("filename", "photo.jpg");
-  formData.append("length", photoBlob.size);
 
-  const r = await fetch("https://slack.com/api/files.getUploadURLExternal", {
-    method: "POST",
-    body: formData
-  });
-  const j = await r.json();
+  const f1 = new FormData();
+  f1.append("token", token);
+  f1.append("filename", "photo.jpg");
+  f1.append("length", photoBlob.size);
+  const {upload_url, file_id} = await (await fetch("https://slack.com/api/files.getUploadURLExternal", {method: "POST", body: f1})).json();
 
-  const formData2 = new FormData();
-  formData2.append("token", token);
-  formData2.append("filename", "photo.jpg");
-  formData2.append("file", photoBlob);
+  const f2 = new FormData();
+  f2.append("token", token);
+  f2.append("filename", "photo.jpg");
+  f2.append("file", photoBlob);
+  await fetch(upload_url, {method: "POST", body: f2, mode: "no-cors"});
 
-  console.log("GO2");
-  const r2 = await fetch(j.upload_url, {
-    method: "POST",
-    body: formData2,
-    mode: 'no-cors'
-  });
-  console.log(r2);
-  //const j2 = await r2.json();
-  //console.log(j2);
-
-  const formData3 = new FormData();
-  formData3.append("token", token);
-  formData3.append("files", JSON.stringify([{"id":j.file_id}]));
-  formData3.append("channel_id", "GJ7SH8L5T");
-  formData3.append("initial_comment", message);
-
-  const r3 = await fetch("https://slack.com/api/files.completeUploadExternal", {
-    method: "POST",
-    body: formData3
-  });
-  console.log(r3);
-  const j3 = await r3.json();
-  console.log(j3);
+  const f3 = new FormData();
+  f3.append("token", token);
+  f3.append("files", `[{"id":"${file_id}"}]`);
+  f3.append("channel_id", "GJ7SH8L5T");
+  f3.append("initial_comment", message);
+  fetch("https://slack.com/api/files.completeUploadExternal", {method: "POST", body: f3});
 }
 
 async function ring(soundId, message) {

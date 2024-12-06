@@ -36,19 +36,27 @@ function takePhoto() {
   return toBlob(photo.toDataURL("image/jpeg"));
 }
 
-function notifyToSlack(message, photoBlob) {
+async function notifyToSlack(message, photoBlob) {
   const token = location.hash.substring(1);
-  const formData = new FormData();
-  formData.append("token", token);
-  formData.append("channels", "GJ7SH8L5T");
-  formData.append("file", photoBlob);
-  formData.append("filename", "photo.jpg");
-  formData.append("initial_comment", message);
 
-  fetch("https://slack.com/api/files.upload", {
-    method: "POST",
-    body: formData
-  });
+  const f1 = new FormData();
+  f1.append("token", token);
+  f1.append("filename", "photo.jpg");
+  f1.append("length", photoBlob.size);
+  const {upload_url, file_id} = await (await fetch("https://slack.com/api/files.getUploadURLExternal", {method:"POST", body:f1})).json();
+
+  const f2 = new FormData();
+  f2.append("token", token);
+  f2.append("filename", "photo.jpg");
+  f2.append("file", photoBlob);
+  await fetch(upload_url, {method:"POST", body:f2, mode:"no-cors"});
+
+  const f3 = new FormData();
+  f3.append("token", token);
+  f3.append("files", `[{"id":"${file_id}"}]`);
+  f3.append("channel_id", "GJ7SH8L5T");
+  f3.append("initial_comment", message);
+  fetch("https://slack.com/api/files.completeUploadExternal", {method:"POST", body:f3});
 }
 
 async function ring(soundId, message) {

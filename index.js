@@ -36,21 +36,6 @@ function takePhoto() {
   return toBlob(photo.toDataURL("image/jpeg"));
 }
 
-function notifyToSlack1(message, photoBlob) {
-  const token = location.hash.substring(1);
-  const formData = new FormData();
-  formData.append("token", token);
-  formData.append("channels", "GJ7SH8L5T");
-  formData.append("file", photoBlob);
-  formData.append("filename", "photo.jpg");
-  formData.append("initial_comment", message);
-
-  fetch("https://slack.com/api/files.upload", {
-    method: "POST",
-    body: formData
-  });
-}
-
 async function notifyToSlack(message, photoBlob) {
   const token = location.hash.substring(1);
 
